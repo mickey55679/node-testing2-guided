@@ -32,7 +32,19 @@ describe("getById", () => {
     result = await Hobbit.getById(3);
     expect(result).toMatchObject({ name: "pippin" });
     result = await Hobbit.getById(4);
-    expect(result).toMatchObject({name: "merry" })
-
+    expect(result).toMatchObject({ name: "merry" });
+  });
+});
+describe("insert", () => {
+  const bilbo = { name: "bilbo" };
+  test("resolves the newly created hobbits", async () => {
+    const result = await Hobbit.insert(bilbo);
+    expect(result).toMatchObject(bilbo);
+  });
+  test("adds the hobbit to the hobbits table", async () => {
+    await Hobbit.insert(bilbo)
+    const records = await db('hobbits')
+    expect(records).toHaveLength(5)
+    
   });
 });
