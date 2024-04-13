@@ -45,6 +45,6 @@ describe("insert", () => {
     await Hobbit.insert(bilbo)
     const records = await db('hobbits')
     expect(records).toHaveLength(5)
-    
   });
+
 });
