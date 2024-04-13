@@ -25,7 +25,14 @@ describe("getAll", () => {
 });
 describe("getById", () => {
   test("resolves the hobbit by the given id", async () => {
-    const result = await Hobbit.getById(1);
-    expect(result).toMatchObject({name: 'sam'})
+    let result = await Hobbit.getById(1);
+    expect(result).toMatchObject({ name: "sam" });
+    result = await Hobbit.getById(2);
+    expect(result).toMatchObject({ name: "frodo" });
+    result = await Hobbit.getById(3);
+    expect(result).toMatchObject({ name: "pippin" });
+    result = await Hobbit.getById(4);
+    expect(result).toMatchObject({name: "merry" })
+
   });
 });
